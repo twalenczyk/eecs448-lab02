@@ -29,6 +29,7 @@ bool LinkedList<T>::isEmpty() const
 template <typename T>
 int LinkedList<T>::size() const
 {
+	// added by Taylor 8/28
 	return(m_size);
 }
 
@@ -38,9 +39,17 @@ bool LinkedList<T>::search(T value) const
 	Node<T>* temp = m_front;
 	bool isFound = false;
 
-	/** TODO
-		Fix this method
-	*/
+	// below added by Taylor 8/28
+	int loc = 0;
+
+	while(!isFound && loc < m_size) { // should pass through the entire list once, the last item being at m_size-1
+		isFound = value == temp->getValue(); // compares the given value to the value stored at the current location
+
+		if(!isFound) { // if not found, go to the next node
+			temp = temp->getNext();
+			loc++;
+		} // else, exit this statement
+	}
 
 	return(isFound);
 }
